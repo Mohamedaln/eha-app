@@ -130,10 +130,10 @@ class EhaFooter extends DDDSuper(LitElement) {
           </div>
           <div class="col1">
             <h4>contact</h4>
-            <p>PO Box 2025<br>State College, PA 16801<br><br>info@elitehoopsalliance.org</p>
+            <p>PO Box 2026<br>State College, PA 16801<br><br>info@elitehoopsalliance.org</p>
           </div>
         </div>
-        <div class="btm1">&copy; 2025 Elite Hoops Alliance. all rights reserved.</div>
+        <div class="btm1">&copy; 2026 Elite Hoops Alliance. all rights reserved.</div>
       </div>
     `;
   }
