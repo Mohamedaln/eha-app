@@ -13,7 +13,7 @@ class EhaAbout extends DDDSuper(LitElement) {
       :host { display: block; }
 
       .abt1 {
-        background: #0a0a0a;
+        background: var(--eha-surface);
         padding: var(--ddd-spacing-10) var(--ddd-spacing-6);
         max-width: 800px;
         margin: auto;
@@ -23,22 +23,22 @@ class EhaAbout extends DDDSuper(LitElement) {
       .line1 {
         width: 40px;
         height: 3px;
-        background: #c9a84c;
+        background: var(--eha-accent);
         margin: 0 auto var(--ddd-spacing-4);
         border-radius: 2px;
       }
 
       h2 {
         font-size: var(--ddd-font-size-xl);
-        color: #f5f5f5;
+        color: var(--eha-page-text);
         font-family: var(--ddd-font-navigation);
         margin: 0 0 var(--ddd-spacing-4) 0;
       }
 
-      h2 span { color: #c9a84c; }
+      h2 span { color: var(--eha-accent); }
 
       p {
-        color: #aaa;
+        color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         line-height: 1.8;
         margin: 0 0 var(--ddd-spacing-6) 0;
@@ -46,9 +46,9 @@ class EhaAbout extends DDDSuper(LitElement) {
 
       .btn1 {
         padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
-        border: 2px solid #c9a84c;
+        border: 2px solid var(--eha-accent);
         background: transparent;
-        color: #c9a84c;
+        color: var(--eha-accent);
         border-radius: 4px;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
@@ -75,4 +75,6 @@ class EhaAbout extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-about", EhaAbout);
+if (!customElements.get("eha-about")) {
+  customElements.define("eha-about", EhaAbout);
+}

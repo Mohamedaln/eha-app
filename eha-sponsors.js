@@ -25,15 +25,15 @@ class EhaSponsors extends DDDSuper(LitElement) {
       :host { display: block; }
 
       .wrap1 {
-        background: #0d1b2a;
-        border-top: 1px solid #1a2a3a;
+        background: var(--eha-surface);
+        border-top: 1px solid var(--eha-border);
         padding: var(--ddd-spacing-8) var(--ddd-spacing-6);
         text-align: center;
       }
 
       .ttl1 {
         font-size: 11px;
-        color: #555;
+        color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -48,18 +48,18 @@ class EhaSponsors extends DDDSuper(LitElement) {
       }
 
       .sp1 {
-        color: #444;
+        color: var(--eha-muted);
         font-size: 14px;
         font-weight: bold;
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        border: 1px solid #222;
+        border: 1px solid var(--eha-border);
         border-radius: 4px;
       }
 
-      .sp1:hover { color: #c9a84c; border-color: #c9a84c; }
+      .sp1:hover { color: var(--eha-accent); border-color: var(--eha-accent); }
     `];
   }
 
@@ -75,4 +75,6 @@ class EhaSponsors extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-sponsors", EhaSponsors);
+if (!customElements.get("eha-sponsors")) {
+  customElements.define("eha-sponsors", EhaSponsors);
+}

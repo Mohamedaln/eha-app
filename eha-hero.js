@@ -13,7 +13,8 @@ class EhaHero extends DDDSuper(LitElement) {
       :host { display: block; }
 
       .hero1 {
-        background: #0d1b2a;
+        background: linear-gradient(135deg, var(--eha-surface) 0%, var(--eha-surface-2) 100%);
+        border-bottom: 1px solid var(--eha-border);
         min-height: 460px;
         display: flex;
         flex-direction: column;
@@ -26,22 +27,22 @@ class EhaHero extends DDDSuper(LitElement) {
       .line1 {
         width: 50px;
         height: 4px;
-        background: #c9a84c;
+        background: var(--eha-accent);
         margin: 0 auto var(--ddd-spacing-4);
         border-radius: 2px;
       }
 
       h1 {
         font-size: var(--ddd-font-size-4xl);
-        color: #f5f5f5;
+        color: var(--eha-page-text);
         font-family: var(--ddd-font-navigation);
         margin: 0 0 var(--ddd-spacing-3) 0;
       }
 
-      h1 span { color: #c9a84c; }
+      h1 span { color: var(--eha-accent); }
 
       p {
-        color: #aaa;
+        color: var(--eha-muted);
         font-size: var(--ddd-font-size-l);
         font-family: var(--ddd-font-navigation);
         margin: 0 0 var(--ddd-spacing-8) 0;
@@ -61,11 +62,11 @@ class EhaHero extends DDDSuper(LitElement) {
         font-weight: bold;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
-        border: 2px solid #c9a84c;
+        border: 2px solid var(--eha-accent);
       }
 
-      .btn1.prim1 { background: #c9a84c; color: #0a0a0a; }
-      .btn1.sec1 { background: transparent; color: #c9a84c; }
+      .btn1.prim1 { background: var(--eha-accent); color: var(--eha-surface); }
+      .btn1.sec1 { background: transparent; color: var(--eha-accent); }
 
       @media (max-width: 600px) {
         h1 { font-size: var(--ddd-font-size-xl); }
@@ -89,4 +90,6 @@ class EhaHero extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-hero", EhaHero);
+if (!customElements.get("eha-hero")) {
+  customElements.define("eha-hero", EhaHero);
+}

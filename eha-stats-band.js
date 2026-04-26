@@ -30,7 +30,7 @@ class EhaStatsBand extends DDDSuper(LitElement) {
       :host { display: block; }
 
       .band1 {
-        background: #0d1b2a;
+        background: var(--eha-surface);
         padding: var(--ddd-spacing-8) var(--ddd-spacing-6);
         display: flex;
         justify-content: center;
@@ -43,14 +43,14 @@ class EhaStatsBand extends DDDSuper(LitElement) {
       .num1 {
         font-size: var(--ddd-font-size-4xl);
         font-weight: bold;
-        color: #c9a84c;
+        color: var(--eha-accent);
         font-family: var(--ddd-font-navigation);
         display: block;
       }
 
       .lbl1 {
         font-size: 11px;
-        color: #aaa;
+        color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -72,4 +72,6 @@ class EhaStatsBand extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-stats-band", EhaStatsBand);
+if (!customElements.get("eha-stats-band")) {
+  customElements.define("eha-stats-band", EhaStatsBand);
+}

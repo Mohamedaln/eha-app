@@ -10,12 +10,14 @@ class EhaNavMenu extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.open1 = false;
+    this.items1 = [];
   }
 
   static get properties() {
     return {
       ...super.properties,
       open1: { type: Boolean },
+      items1: { type: Array },
     };
   }
 
@@ -27,32 +29,40 @@ class EhaNavMenu extends DDDSuper(LitElement) {
       .moreBtn1 {
         background: none;
         border: none;
-        color: #f5f5f5;
+        color: var(--eha-page-text);
         font-size: 14px;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
       }
 
-      .moreBtn1:hover { color: #c9a84c; }
+      .moreBtn1:hover { color: var(--eha-accent); }
 
       .drop1 {
-        display: none;
         position: absolute;
         top: 100%;
         left: 0;
-        background: #0d1b2a;
-        border: 1px solid #c9a84c;
+        background: var(--eha-surface);
+        border: 1px solid var(--eha-border);
         border-radius: 6px;
         min-width: 160px;
         z-index: 200;
         padding: var(--ddd-spacing-2) 0;
       }
 
-      .drop1.open1 { display: block; }
+      .dropHead1 {
+        color: var(--eha-accent);
+        font-size: 11px;
+        font-weight: bold;
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-4) var(--ddd-spacing-1);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: var(--ddd-font-navigation);
+      }
 
       .drop1 a {
         display: block;
-        color: #f5f5f5;
+        color: var(--eha-page-text);
         text-decoration: none;
         padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
         font-size: 13px;
@@ -60,15 +70,34 @@ class EhaNavMenu extends DDDSuper(LitElement) {
         cursor: pointer;
       }
 
-      .drop1 a:hover { color: #c9a84c; background: #1a2a3a; }
+      .drop1 a:hover { color: var(--eha-accent); background: var(--eha-surface-2); }
     `];
   }
 
   connectedCallback() {
     super.connectedCallback();
+    this.loadMenu1();
     document.addEventListener("click", (e) => {
-      if (!this.contains(e.target)) this.open1 = false;
+      if (!this.contains(e.target)) {
+        this.open1 = false;
+      }
     });
+  }
+
+  async loadMenu1() {
+    var url1 = window.location.hostname === "localhost" ? "/menu.json" : "/api/menu";
+    try {
+      var res1 = await fetch(url1);
+      var json1 = await res1.json();
+      this.items1 = json1.items;
+    } catch(e) {
+      this.items1 = [
+        { label: "for parents", page: "about" },
+        { label: "for coaches", page: "about" },
+        { label: "contact us", page: "about" },
+        { label: "register now", page: "programs" },
+      ];
+    }
   }
 
   goTo1(pg) {
@@ -79,19 +108,32 @@ class EhaNavMenu extends DDDSuper(LitElement) {
     this.open1 = false;
   }
 
+  tglOpen1(e) {
+    if (e) {
+      e.stopPropagation();
+    }
+    this.open1 = !this.open1;
+    this.requestUpdate();
+  }
+
   render() {
     return html`
-      <button class="moreBtn1" @click="${() => this.open1 = !this.open1}">
+      <button class="moreBtn1" @click="${this.tglOpen1}">
         more ${this.open1 ? '▲' : '▼'}
       </button>
-      <div class="drop1 ${this.open1 ? 'open1' : ''}">
-        <a @click="${() => this.goTo1('about')}">for parents</a>
-        <a @click="${() => this.goTo1('about')}">for coaches</a>
-        <a @click="${() => this.goTo1('about')}">contact us</a>
-        <a @click="${() => this.goTo1('programs')}">register now</a>
-      </div>
+
+      ${this.open1 ? html`
+        <div class="drop1">
+          <div class="dropHead1">resources</div>
+          ${this.items1.map(item1 => html`
+            <a @click="${() => this.goTo1(item1.page)}">${item1.label}</a>
+          `)}
+        </div>
+      ` : ``}
     `;
   }
 }
 
-customElements.define("eha-nav-menu", EhaNavMenu);
+if (!customElements.get("eha-nav-menu")) {
+  customElements.define("eha-nav-menu", EhaNavMenu);
+}

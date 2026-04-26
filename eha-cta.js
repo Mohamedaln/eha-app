@@ -35,11 +35,11 @@ class EhaCta extends DDDSuper(LitElement) {
         font-weight: bold;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
-        border: 2px solid #c9a84c;
+        border: 2px solid var(--eha-accent);
       }
 
-      .btn1.prim1 { background: #c9a84c; color: #0a0a0a; }
-      .btn1.sec1 { background: transparent; color: #c9a84c; }
+      .btn1.prim1 { background: var(--eha-accent); color: var(--eha-surface); }
+      .btn1.sec1 { background: transparent; color: var(--eha-accent); }
     `];
   }
 
@@ -58,4 +58,6 @@ class EhaCta extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-cta", EhaCta);
+if (!customElements.get("eha-cta")) {
+  customElements.define("eha-cta", EhaCta);
+}

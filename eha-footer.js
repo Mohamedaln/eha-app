@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
+const logoUrl1 = new URL("./logo.png", import.meta.url).href;
+
 class EhaFooter extends DDDSuper(LitElement) {
 
   static get tag() {
@@ -13,8 +15,8 @@ class EhaFooter extends DDDSuper(LitElement) {
       :host { display: block; }
 
       .ft1 {
-        background: #050505;
-        border-top: 2px solid #c9a84c;
+        background: var(--eha-surface-2);
+        border-top: 2px solid var(--eha-border);
         padding: var(--ddd-spacing-10) var(--ddd-spacing-6) var(--ddd-spacing-6);
       }
 
@@ -27,7 +29,7 @@ class EhaFooter extends DDDSuper(LitElement) {
       }
 
       .col1 h4 {
-        color: #c9a84c;
+        color: var(--eha-accent);
         font-size: 12px;
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
@@ -37,7 +39,7 @@ class EhaFooter extends DDDSuper(LitElement) {
 
       .col1 a {
         display: block;
-        color: #888;
+        color: var(--eha-muted);
         font-size: 13px;
         font-family: var(--ddd-font-navigation);
         text-decoration: none;
@@ -45,10 +47,10 @@ class EhaFooter extends DDDSuper(LitElement) {
         cursor: pointer;
       }
 
-      .col1 a:hover { color: #c9a84c; }
+      .col1 a:hover { color: var(--eha-accent); }
 
       .col1 p {
-        color: #888;
+        color: var(--eha-muted);
         font-size: 13px;
         font-family: var(--ddd-font-navigation);
         line-height: 1.6;
@@ -66,27 +68,27 @@ class EhaFooter extends DDDSuper(LitElement) {
         width: 34px;
         height: 34px;
         border-radius: 50%;
-        background: #c9a84c;
+        background: var(--eha-accent);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 13px;
         font-weight: bold;
-        color: #0a0a0a;
+        color: var(--eha-surface);
       }
 
       .logoTxt1 {
-        color: #f5f5f5;
+        color: var(--eha-page-text);
         font-size: 14px;
         font-weight: bold;
         font-family: var(--ddd-font-navigation);
       }
 
       .btm1 {
-        border-top: 1px solid #111;
+        border-top: 1px solid var(--eha-border);
         padding-top: var(--ddd-spacing-4);
         text-align: center;
-        color: #444;
+        color: var(--eha-muted);
         font-size: 12px;
         font-family: var(--ddd-font-navigation);
         max-width: 1100px;
@@ -108,7 +110,7 @@ class EhaFooter extends DDDSuper(LitElement) {
         <div class="ftTop1">
           <div class="col1">
             <div class="logoRow1">
-              <div class="logoCirc1">EHA</div>
+              <img src="${logoUrl1}" alt="EHA logo" style="width:34px;height:34px;border-radius:50%;object-fit:cover;" />
               <div class="logoTxt1">Elite Hoops Alliance</div>
             </div>
             <p>where champions are made. developing youth basketball players since 2010.</p>
@@ -139,4 +141,6 @@ class EhaFooter extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-footer", EhaFooter);
+if (!customElements.get("eha-footer")) {
+  customElements.define("eha-footer", EhaFooter);
+}

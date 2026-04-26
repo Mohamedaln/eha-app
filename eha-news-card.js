@@ -31,8 +31,8 @@ class EhaNewsCard extends DDDSuper(LitElement) {
       :host { display: block; flex: 1; min-width: 220px; }
 
       .card1 {
-        background: #0d1b2a;
-        border: 1px solid #1a2a3a;
+        background: var(--eha-surface);
+        border: 1px solid var(--eha-border);
         border-radius: 8px;
         padding: var(--ddd-spacing-5);
         display: flex;
@@ -40,11 +40,11 @@ class EhaNewsCard extends DDDSuper(LitElement) {
         gap: var(--ddd-spacing-2);
       }
 
-      .card1:hover { border-color: #c9a84c; }
+      .card1:hover { border-color: var(--eha-accent); }
 
       .dt1 {
         font-size: 11px;
-        color: #c9a84c;
+        color: var(--eha-accent);
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -52,14 +52,14 @@ class EhaNewsCard extends DDDSuper(LitElement) {
 
       h3 {
         font-size: var(--ddd-font-size-s);
-        color: #f5f5f5;
+        color: var(--eha-page-text);
         font-family: var(--ddd-font-navigation);
         margin: 0;
       }
 
       p {
         font-size: 13px;
-        color: #aaa;
+        color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         margin: 0;
         flex: 1;
@@ -68,7 +68,7 @@ class EhaNewsCard extends DDDSuper(LitElement) {
 
       a {
         font-size: 13px;
-        color: #c9a84c;
+        color: var(--eha-accent);
         font-family: var(--ddd-font-navigation);
         text-decoration: none;
       }
@@ -89,4 +89,6 @@ class EhaNewsCard extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define("eha-news-card", EhaNewsCard);
+if (!customElements.get("eha-news-card")) {
+  customElements.define("eha-news-card", EhaNewsCard);
+}
