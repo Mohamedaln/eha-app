@@ -20,7 +20,7 @@ class EhaApp extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.pg1 = "home";
-    this.drk1 = false;
+    this.drk1 = true;
     this.syncTheme1();
   }
 
@@ -56,9 +56,9 @@ class EhaApp extends DDDSuper(LitElement) {
 
       .pgHead1 {
         padding: var(--ddd-spacing-8) var(--ddd-spacing-6) var(--ddd-spacing-4);
-        max-width: 1100px;
+        max-width: var(--ddd-spacing-max-width);
         margin: auto;
-        border-bottom: 1px solid var(--eha-border);
+        border-bottom: var(--ddd-border-sm) solid var(--eha-border);
         margin-bottom: var(--ddd-spacing-6);
       }
 
@@ -70,7 +70,7 @@ class EhaApp extends DDDSuper(LitElement) {
       }
 
       .pgContent1 {
-        max-width: 1100px;
+        max-width: var(--ddd-spacing-max-width);
         margin: auto;
         padding: 0 var(--ddd-spacing-6) var(--ddd-spacing-10);
       }
@@ -83,8 +83,8 @@ class EhaApp extends DDDSuper(LitElement) {
 
       .pgCard1 {
         background: var(--eha-surface);
-        border: 1px solid var(--eha-border);
-        border-radius: 8px;
+        border: var(--ddd-border-sm) solid var(--eha-border);
+        border-radius: var(--ddd-radius-sm);
         padding: var(--ddd-spacing-5);
       }
 
@@ -99,7 +99,7 @@ class EhaApp extends DDDSuper(LitElement) {
 
       .pgCard1 p {
         color: var(--eha-muted);
-        font-size: 13px;
+        font-size: var(--ddd-font-size-xs);
         font-family: var(--ddd-font-navigation);
         margin: 0;
         line-height: 1.6;
@@ -107,25 +107,38 @@ class EhaApp extends DDDSuper(LitElement) {
 
       .newsRow1 {
         display: flex;
-        gap: 16px;
-        padding: 32px 16px;
-        max-width: 1100px;
+        gap: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-6) var(--ddd-spacing-4);
+        max-width: var(--ddd-spacing-max-width);
         margin: auto;
         flex-wrap: wrap;
       }
+
+      .box1 { margin-top: var(--ddd-spacing-6); }
     `];
   }
 
   syncTheme1() {
     var dark1 = this.drk1;
-    this.style.setProperty("--eha-page-bg", dark1 ? "#0a0a0a" : "#f6f7fb");
-    this.style.setProperty("--eha-surface", dark1 ? "#0d1b2a" : "#ffffff");
-    this.style.setProperty("--eha-surface-2", dark1 ? "#111d2c" : "#edf1f7");
-    this.style.setProperty("--eha-page-text", dark1 ? "#f5f5f5" : "#102033");
-    this.style.setProperty("--eha-muted", dark1 ? "#aaa" : "#5d6b7d");
-    this.style.setProperty("--eha-border", dark1 ? "#1a2a3a" : "#d7dde7");
-    this.style.setProperty("--eha-accent", dark1 ? "#c9a84c" : "#a97b1f");
-    this.style.setProperty("--eha-accent-strong", dark1 ? "#b8973b" : "#8f6512");
+    if (dark1) {
+      this.style.setProperty("--eha-page-bg", "#0a0a0a");
+      this.style.setProperty("--eha-surface", "#0d1b2a");
+      this.style.setProperty("--eha-surface-2", "#111d2c");
+      this.style.setProperty("--eha-page-text", "#f5f5f5");
+      this.style.setProperty("--eha-muted", "#aaa");
+      this.style.setProperty("--eha-border", "#1a2a3a");
+      this.style.setProperty("--eha-accent", "#c9a84c");
+      this.style.setProperty("--eha-accent-strong", "#b8973b");
+    } else {
+      this.style.setProperty("--eha-page-bg", "#f6f7fb");
+      this.style.setProperty("--eha-surface", "#ffffff");
+      this.style.setProperty("--eha-surface-2", "#edf1f7");
+      this.style.setProperty("--eha-page-text", "#102033");
+      this.style.setProperty("--eha-muted", "#5d6b7d");
+      this.style.setProperty("--eha-border", "#d7dde7");
+      this.style.setProperty("--eha-accent", "#a97b1f");
+      this.style.setProperty("--eha-accent-strong", "#8f6512");
+    }
   }
 
   connectedCallback() {
@@ -159,25 +172,25 @@ class EhaApp extends DDDSuper(LitElement) {
 
   renderHome1() {
     return html`
-      <eha-hero></eha-hero>
+      <eha-hero .drk1="${this.drk1}"></eha-hero>
       <eha-stats-band></eha-stats-band>
       <eha-schedule></eha-schedule>
       <div class="newsRow1">
         <eha-news-card
           ttl1="EHA Wins Regional Championship"
-          dt1="March 15, 2025"
+          dt1="March 15, 2026"
           txt1="Our 14U team took home the gold at the regional tournament"
           lnk1="?page=home"
         ></eha-news-card>
         <eha-news-card
           ttl1="Summer Camp Registration Open"
-          dt1="February 28, 2025"
+          dt1="February 28, 2026"
           txt1="Sign up now for our elite summer training camp"
           lnk1="?page=programs"
         ></eha-news-card>
         <eha-news-card
           ttl1="New Coaching Staff Announced"
-          dt1="January 10, 2025"
+          dt1="January 10, 2026"
           txt1="We are excited to welcome three new coaches to EHA"
           lnk1="?page=about"
         ></eha-news-card>
@@ -199,7 +212,7 @@ class EhaApp extends DDDSuper(LitElement) {
       <div class="pgHead1"><h1>about EHA</h1></div>
       <div class="pgContent1">
         <eha-about></eha-about>
-        <div style="margin-top:32px;"><eha-stats-band></eha-stats-band></div>
+          <div class="box1"><eha-stats-band></eha-stats-band></div>
       </div>
     `;
   }
@@ -263,7 +276,7 @@ class EhaApp extends DDDSuper(LitElement) {
         @toggle-dark="${this.tglDrk1}"
       ></eha-header>
 
-      <div class="${wrapCls1}">
+      <div class="${wrapCls1}" @go-to="${(e) => this.goTo1(e.detail.pg1)}">
         ${pg1Content}
       </div>
 

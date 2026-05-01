@@ -1,12 +1,39 @@
 export default function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200).json({
+    id: "eha-menu",
+    title: "Elite Hoops Alliance",
     items: [
-      { label: "for parents", page: "about" },
-      { label: "for coaches", page: "about" },
-      { label: "contact us", page: "about" },
-      { label: "latest news", page: "home" },
-      { label: "register now", page: "programs" }
+      {
+        id: "item-1",
+        title: "for parents",
+        slug: "about",
+        description: "resources and info for parents"
+      },
+      {
+        id: "item-2",
+        title: "for coaches",
+        slug: "about",
+        description: "coaching resources and staff info"
+      },
+      {
+        id: "item-3",
+        title: "contact us",
+        slug: "about",
+        description: "get in touch with EHA"
+      },
+      {
+        id: "item-4",
+        title: "latest news",
+        slug: "home",
+        description: "recent updates and announcements"
+      },
+      {
+        id: "item-5",
+        title: "register now",
+        slug: "programs",
+        description: "sign up for a division or camp"
+      }
     ]
   });
 }

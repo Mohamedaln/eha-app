@@ -26,17 +26,17 @@ class EhaSponsors extends DDDSuper(LitElement) {
 
       .wrap1 {
         background: var(--eha-surface);
-        border-top: 1px solid var(--eha-border);
+        border-top: var(--ddd-border-sm) solid var(--eha-border);
         padding: var(--ddd-spacing-8) var(--ddd-spacing-6);
         text-align: center;
       }
 
       .ttl1 {
-        font-size: 11px;
+        font-size: var(--ddd-font-size-xs);
         color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: var(--ddd-ls-md);
         margin-bottom: var(--ddd-spacing-6);
       }
 
@@ -49,14 +49,14 @@ class EhaSponsors extends DDDSuper(LitElement) {
 
       .sp1 {
         color: var(--eha-muted);
-        font-size: 14px;
+        font-size: var(--ddd-font-size-s);
         font-weight: bold;
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: var(--ddd-ls-sm);
         padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        border: 1px solid var(--eha-border);
-        border-radius: 4px;
+        border: var(--ddd-border-sm) solid var(--eha-border);
+        border-radius: var(--ddd-radius-sm);
       }
 
       .sp1:hover { color: var(--eha-accent); border-color: var(--eha-accent); }

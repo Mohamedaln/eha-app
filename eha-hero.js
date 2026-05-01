@@ -7,15 +7,27 @@ class EhaHero extends DDDSuper(LitElement) {
     return "eha-hero";
   }
 
+  constructor() {
+    super();
+    this.drk1 = true;
+  }
+
+  static get properties() {
+    return {
+      ...super.properties,
+      drk1: { type: Boolean },
+    };
+  }
+
   static get styles() {
     return [super.styles,
     css`
       :host { display: block; }
 
       .hero1 {
-        background: linear-gradient(135deg, var(--eha-surface) 0%, var(--eha-surface-2) 100%);
-        border-bottom: 1px solid var(--eha-border);
-        min-height: 460px;
+        background-color: #0d1b2a;
+        border-bottom: var(--ddd-border-sm) solid var(--eha-border);
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -24,17 +36,33 @@ class EhaHero extends DDDSuper(LitElement) {
         padding: var(--ddd-spacing-10) var(--ddd-spacing-6);
       }
 
+      .hero1.lgt1 {
+        background-color: #f0f4f8;
+      }
+
+      .hero1.lgt1 h1 {
+        color: #102033;
+      }
+
+      .hero1.lgt1 h1 span {
+        color: #c9a84c;
+      }
+
+      .hero1.lgt1 p {
+        color: #5d6b7d;
+      }
+
       .line1 {
-        width: 50px;
-        height: 4px;
-        background: var(--eha-accent);
+        width: var(--ddd-spacing-10);
+        height: var(--ddd-spacing-1);
+        background: #c9a84c;
         margin: 0 auto var(--ddd-spacing-4);
-        border-radius: 2px;
+        border-radius: var(--ddd-radius-sm);
       }
 
       h1 {
         font-size: var(--ddd-font-size-4xl);
-        color: var(--eha-page-text);
+        color: #f5f5f5;
         font-family: var(--ddd-font-navigation);
         margin: 0 0 var(--ddd-spacing-3) 0;
       }
@@ -42,7 +70,7 @@ class EhaHero extends DDDSuper(LitElement) {
       h1 span { color: var(--eha-accent); }
 
       p {
-        color: var(--eha-muted);
+        color: #aaa;
         font-size: var(--ddd-font-size-l);
         font-family: var(--ddd-font-navigation);
         margin: 0 0 var(--ddd-spacing-8) 0;
@@ -57,12 +85,12 @@ class EhaHero extends DDDSuper(LitElement) {
 
       .btn1 {
         padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
-        border-radius: 4px;
-        font-size: 14px;
+        border-radius: var(--ddd-radius-sm);
+        font-size: var(--ddd-font-size-s);
         font-weight: bold;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
-        border: 2px solid var(--eha-accent);
+        border: var(--ddd-border-md) solid var(--eha-accent);
       }
 
       .btn1.prim1 { background: var(--eha-accent); color: var(--eha-surface); }
@@ -70,20 +98,33 @@ class EhaHero extends DDDSuper(LitElement) {
 
       @media (max-width: 600px) {
         h1 { font-size: var(--ddd-font-size-xl); }
-        .hero1 { min-height: 340px; }
+        .hero1 { min-height: var(--ddd-spacing-40); }
       }
     `];
   }
 
   render() {
+    var cls1 = this.drk1 ? "hero1" : "hero1 lgt1";
     return html`
-      <div class="hero1">
+      <div class="${cls1}">
         <div class="line1"></div>
         <h1>Elite <span>Hoops</span> Alliance</h1>
         <p>Where Champions Are Made</p>
         <div class="btns1">
-          <button class="btn1 prim1">register now</button>
-          <button class="btn1 sec1">view schedule</button>
+          <button class="btn1 prim1" @click="${() => {
+            this.dispatchEvent(new CustomEvent("go-to", {
+              bubbles: true,
+              composed: true,
+              detail: { pg1: "programs" }
+            }));
+          }}">register now</button>
+          <button class="btn1 sec1" @click="${() => {
+            this.dispatchEvent(new CustomEvent("go-to", {
+              bubbles: true,
+              composed: true,
+              detail: { pg1: "schedule" }
+            }));
+          }}">view schedule</button>
         </div>
       </div>
     `;

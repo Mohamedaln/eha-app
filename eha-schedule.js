@@ -26,7 +26,7 @@ class EhaSchedule extends DDDSuper(LitElement) {
 
       .wrap1 {
         padding: var(--ddd-spacing-8) var(--ddd-spacing-6);
-        max-width: 1100px;
+        max-width: var(--ddd-spacing-max-width);
         margin: auto;
       }
 
@@ -34,6 +34,7 @@ class EhaSchedule extends DDDSuper(LitElement) {
         color: var(--eha-accent);
         font-family: var(--ddd-font-navigation);
         margin: 0 0 var(--ddd-spacing-6) 0;
+        text-align: center;
       }
 
       .row1 {
@@ -45,10 +46,10 @@ class EhaSchedule extends DDDSuper(LitElement) {
 
       .game1 {
         background: var(--eha-surface);
-        border: 1px solid var(--eha-border);
-        border-radius: 8px;
+        border: var(--ddd-border-sm) solid var(--eha-border);
+        border-radius: var(--ddd-radius-sm);
         padding: var(--ddd-spacing-4);
-        min-width: 200px;
+        min-width: var(--ddd-spacing-40);
         flex-shrink: 0;
         font-family: var(--ddd-font-navigation);
       }
@@ -56,36 +57,36 @@ class EhaSchedule extends DDDSuper(LitElement) {
       .game1:hover { border-color: var(--eha-accent); }
 
       .gDt1 {
-        font-size: 11px;
+        font-size: var(--ddd-font-size-xs);
         color: var(--eha-accent);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: var(--ddd-ls-sm);
         margin-bottom: var(--ddd-spacing-2);
       }
 
       .gTeam1 {
-        font-size: 14px;
+        font-size: var(--ddd-font-size-s);
         color: var(--eha-page-text);
         font-weight: bold;
         margin-bottom: var(--ddd-spacing-1);
       }
 
-      .gLoc1 { font-size: 12px; color: var(--eha-muted); }
+      .gLoc1 { font-size: var(--ddd-font-size-xs); color: var(--eha-muted); }
 
       .gDiv1 {
         display: inline-block;
         background: var(--eha-accent);
         color: var(--eha-surface);
-        font-size: 10px;
+        font-size: var(--ddd-font-size-xs);
         font-weight: bold;
-        padding: 2px 8px;
-        border-radius: 10px;
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        border-radius: var(--ddd-radius-md);
         margin-top: var(--ddd-spacing-2);
       }
 
       .loading1 {
         color: var(--eha-muted);
-        font-size: 14px;
+        font-size: var(--ddd-font-size-s);
         font-family: var(--ddd-font-navigation);
       }
     `];

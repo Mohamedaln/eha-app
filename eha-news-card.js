@@ -28,12 +28,12 @@ class EhaNewsCard extends DDDSuper(LitElement) {
   static get styles() {
     return [super.styles,
     css`
-      :host { display: block; flex: 1; min-width: 220px; }
+      :host { display: block; flex: 1; min-width: var(--ddd-spacing-40); }
 
       .card1 {
         background: var(--eha-surface);
-        border: 1px solid var(--eha-border);
-        border-radius: 8px;
+        border: var(--ddd-border-sm) solid var(--eha-border);
+        border-radius: var(--ddd-radius-sm);
         padding: var(--ddd-spacing-5);
         display: flex;
         flex-direction: column;
@@ -43,11 +43,11 @@ class EhaNewsCard extends DDDSuper(LitElement) {
       .card1:hover { border-color: var(--eha-accent); }
 
       .dt1 {
-        font-size: 11px;
+        font-size: var(--ddd-font-size-xs);
         color: var(--eha-accent);
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: var(--ddd-ls-sm);
       }
 
       h3 {
@@ -58,7 +58,7 @@ class EhaNewsCard extends DDDSuper(LitElement) {
       }
 
       p {
-        font-size: 13px;
+        font-size: var(--ddd-font-size-xs);
         color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         margin: 0;
@@ -67,7 +67,7 @@ class EhaNewsCard extends DDDSuper(LitElement) {
       }
 
       a {
-        font-size: 13px;
+        font-size: var(--ddd-font-size-xs);
         color: var(--eha-accent);
         font-family: var(--ddd-font-navigation);
         text-decoration: none;

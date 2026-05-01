@@ -30,12 +30,12 @@ class EhaCta extends DDDSuper(LitElement) {
 
       .btn1 {
         padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
-        border-radius: 4px;
-        font-size: 14px;
+        border-radius: var(--ddd-radius-sm);
+        font-size: var(--ddd-font-size-s);
         font-weight: bold;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
-        border: 2px solid var(--eha-accent);
+        border: var(--ddd-border-md) solid var(--eha-accent);
       }
 
       .btn1.prim1 { background: var(--eha-accent); color: var(--eha-surface); }

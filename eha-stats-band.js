@@ -49,7 +49,7 @@ class EhaStatsBand extends DDDSuper(LitElement) {
       }
 
       .lbl1 {
-        font-size: 11px;
+        font-size: var(--ddd-font-size-xs);
         color: var(--eha-muted);
         font-family: var(--ddd-font-navigation);
         text-transform: uppercase;

@@ -15,17 +15,17 @@ class EhaAbout extends DDDSuper(LitElement) {
       .abt1 {
         background: var(--eha-surface);
         padding: var(--ddd-spacing-10) var(--ddd-spacing-6);
-        max-width: 800px;
+        max-width: var(--ddd-spacing-max-width);
         margin: auto;
         text-align: center;
       }
 
       .line1 {
-        width: 40px;
-        height: 3px;
+        width: var(--ddd-spacing-8);
+        height: var(--ddd-spacing-1);
         background: var(--eha-accent);
         margin: 0 auto var(--ddd-spacing-4);
-        border-radius: 2px;
+        border-radius: var(--ddd-radius-sm);
       }
 
       h2 {
@@ -46,13 +46,13 @@ class EhaAbout extends DDDSuper(LitElement) {
 
       .btn1 {
         padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
-        border: 2px solid var(--eha-accent);
+        border: var(--ddd-border-md) solid var(--eha-accent);
         background: transparent;
         color: var(--eha-accent);
-        border-radius: 4px;
+        border-radius: var(--ddd-radius-sm);
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
-        font-size: 14px;
+        font-size: var(--ddd-font-size-s);
       }
     `];
   }
@@ -69,7 +69,13 @@ class EhaAbout extends DDDSuper(LitElement) {
           With over 200 players across 5 age divisions, EHA is the premier youth
           basketball organization in the region.
         </p>
-        <button class="btn1">learn more</button>
+        <button class="btn1" @click="${() => {
+          this.dispatchEvent(new CustomEvent("go-to", {
+            bubbles: true,
+            composed: true,
+            detail: { pg1: "about" }
+          }));
+        }}">learn more</button>
       </div>
     `;
   }

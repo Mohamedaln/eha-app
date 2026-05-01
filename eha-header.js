@@ -32,8 +32,8 @@ class EhaHeader extends DDDSuper(LitElement) {
       :host { display: block; }
 
       .hdr1 {
-        background: var(--eha-surface);
-        border-bottom: 2px solid var(--eha-border);
+        background-color: #0a0a0a;
+        border-bottom: var(--ddd-border-md) solid #c9a84c;
         padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
         display: flex !important;
         flex-direction: row !important;
@@ -44,36 +44,71 @@ class EhaHeader extends DDDSuper(LitElement) {
         z-index: 100;
       }
 
+      .hdr1.lgt1 {
+        background-color: #ffffff;
+      }
+
+      .hdr1.lgt1 .logoTxt1 {
+        color: #102033;
+      }
+
+      .hdr1.lgt1 .logoTxt1 span {
+        color: #c9a84c;
+      }
+
+      .hdr1.lgt1 .navLinks1 a {
+        color: #102033;
+      }
+
+      .hdr1.lgt1 .navLinks1 a:hover {
+        color: #c9a84c;
+      }
+
+      .hdr1.lgt1 .navLinks1 a.act1 {
+        color: #c9a84c;
+      }
+
+      .hdr1.lgt1 .drkBtn1 {
+        background: #102033;
+        color: #f5f5f5;
+        border: var(--ddd-border-sm) solid #102033;
+      }
+
       .logo1 {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         gap: var(--ddd-spacing-2);
         cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        text-align: left;
       }
 
       .logoCirc1 {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+        width: var(--ddd-spacing-8);
+        height: var(--ddd-spacing-8);
+        border-radius: var(--ddd-radius-circle);
         background: var(--eha-accent);
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         font-weight: bold;
         color: var(--eha-surface);
-        font-size: 15px;
+        font-size: var(--ddd-font-size-s);
         flex-shrink: 0;
       }
 
       .logoTxt1 {
-        color: var(--eha-page-text);
-        font-size: 16px;
+        color: #f5f5f5;
+        font-size: var(--ddd-font-size-s);
         font-weight: bold;
         font-family: var(--ddd-font-navigation);
       }
 
-      .logoTxt1 span { color: var(--eha-accent); }
+      .logoTxt1 span { color: #c9a84c; }
 
       /* fix: force ul to be horizontal row */
       .navLinks1 {
@@ -93,18 +128,18 @@ class EhaHeader extends DDDSuper(LitElement) {
       }
 
       .navLinks1 a {
-        color: var(--eha-page-text);
+        color: #f5f5f5;
         text-decoration: none;
-        font-size: 14px;
+        font-size: var(--ddd-font-size-s);
         font-family: var(--ddd-font-navigation);
         cursor: pointer;
         padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-        border-radius: 4px;
+        border-radius: var(--ddd-radius-sm);
         white-space: nowrap;
       }
 
-      .navLinks1 a:hover { color: var(--eha-accent); }
-      .navLinks1 a.act1 { color: var(--eha-accent); border-bottom: 2px solid var(--eha-accent); }
+      .navLinks1 a:hover { color: #c9a84c; }
+      .navLinks1 a.act1 { color: #c9a84c; border-bottom: var(--ddd-border-md) solid #c9a84c; }
 
       .right1 {
         display: flex !important;
@@ -116,12 +151,12 @@ class EhaHeader extends DDDSuper(LitElement) {
 
       .drkBtn1 {
         background: var(--eha-surface-2);
-        border: 1px solid var(--eha-border);
-        color: var(--eha-page-text);
+        border: var(--ddd-border-sm) solid var(--eha-border);
+        color: #f5f5f5;
         padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-        border-radius: 4px;
+        border-radius: var(--ddd-radius-sm);
         cursor: pointer;
-        font-size: 12px;
+        font-size: var(--ddd-font-size-xs);
         font-family: var(--ddd-font-navigation);
         white-space: nowrap;
       }
@@ -131,11 +166,11 @@ class EhaHeader extends DDDSuper(LitElement) {
         border: none;
         color: var(--eha-surface);
         padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        border-radius: 4px;
+        border-radius: var(--ddd-radius-sm);
         cursor: pointer;
         font-weight: bold;
         font-family: var(--ddd-font-navigation);
-        font-size: 13px;
+        font-size: var(--ddd-font-size-xs);
         white-space: nowrap;
       }
 
@@ -145,30 +180,34 @@ class EhaHeader extends DDDSuper(LitElement) {
         display: none;
         background: none;
         border: none;
-        color: var(--eha-page-text);
-        font-size: 24px;
+        color: #f5f5f5;
+        font-size: var(--ddd-font-size-xl);
         cursor: pointer;
       }
 
       .mobMenu1 {
         display: none;
-        background: var(--eha-surface);
+        background: #0a0a0a;
         padding: var(--ddd-spacing-4);
-        border-bottom: 1px solid var(--eha-border);
+        border-bottom: var(--ddd-border-sm) solid #c9a84c;
       }
+
+      .img1 { width: var(--ddd-spacing-8); height: var(--ddd-spacing-8); border-radius:var(--ddd-radius-circle); object-fit:cover; }
+      .box1 { margin-top: var(--ddd-spacing-6); }
+      .mobOpen1 { display:block; }
 
       .mobMenu1 a {
         display: block;
-        color: var(--eha-page-text);
+        color: #f5f5f5;
         text-decoration: none;
         padding: var(--ddd-spacing-2) 0;
-        font-size: 15px;
-        border-bottom: 1px solid var(--eha-border);
+        font-size: var(--ddd-font-size-s);
+        border-bottom: var(--ddd-border-sm) solid #1a2a3a;
         cursor: pointer;
         font-family: var(--ddd-font-navigation);
       }
 
-      .mobMenu1 a:hover { color: var(--eha-accent); }
+      .mobMenu1 a:hover { color: #c9a84c; }
 
       @media (max-width: 768px) {
         .navLinks1 { display: none !important; }
@@ -192,19 +231,36 @@ class EhaHeader extends DDDSuper(LitElement) {
     }));
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this._key1 = (e) => {
+      if (e.key === "Escape") {
+        this.menuOpen1 = false;
+        this.requestUpdate();
+      }
+    };
+    document.addEventListener("keydown", this._key1);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener("keydown", this._key1);
+    super.disconnectedCallback();
+  }
+
   render() {
+    var cls1 = this.drk1 ? "hdr1" : "hdr1 lgt1";
     return html`
-      <div class="hdr1">
-        <div class="logo1" @click="${() => this.navTo1('home')}">
-          <img src="${logoUrl1}" alt="EHA logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;" />
+      <div class="${cls1}">
+        <button type="button" class="logo1" aria-label="go to home page" @click="${(e) => { e.preventDefault(); this.navTo1('home'); }}">
+          <img src="${logoUrl1}" alt="EHA logo" class="img1" />
           <div class="logoTxt1">Elite <span>Hoops</span> Alliance</div>
-          </div>
+          </button>
 
         <ul class="navLinks1">
-          <li><a class="${this.pg1 === 'home' ? 'act1' : ''}" @click="${() => this.navTo1('home')}">home</a></li>
-          <li><a class="${this.pg1 === 'schedule' ? 'act1' : ''}" @click="${() => this.navTo1('schedule')}">schedule</a></li>
-          <li><a class="${this.pg1 === 'programs' ? 'act1' : ''}" @click="${() => this.navTo1('programs')}">programs</a></li>
-          <li><a class="${this.pg1 === 'about' ? 'act1' : ''}" @click="${() => this.navTo1('about')}">about</a></li>
+          <li><a href="?page=home" class="${this.pg1 === 'home' ? 'act1' : ''}" @click="${(e) => { e.preventDefault(); this.navTo1('home'); }}">home</a></li>
+          <li><a href="?page=schedule" class="${this.pg1 === 'schedule' ? 'act1' : ''}" @click="${(e) => { e.preventDefault(); this.navTo1('schedule'); }}">schedule</a></li>
+          <li><a href="?page=programs" class="${this.pg1 === 'programs' ? 'act1' : ''}" @click="${(e) => { e.preventDefault(); this.navTo1('programs'); }}">programs</a></li>
+          <li><a href="?page=about" class="${this.pg1 === 'about' ? 'act1' : ''}" @click="${(e) => { e.preventDefault(); this.navTo1('about'); }}">about</a></li>
           <li><eha-nav-menu @go-to="${(e) => this.navTo1(e.detail.pg1)}"></eha-nav-menu></li>
         </ul>
 
@@ -213,17 +269,17 @@ class EhaHeader extends DDDSuper(LitElement) {
             ${this.drk1 ? 'light' : 'dark'}
           </button>
           <button class="regBtn1" @click="${() => this.navTo1('programs')}">register now</button>
-          <button class="hambBtn1" @click="${() => { this.menuOpen1 = !this.menuOpen1; this.requestUpdate(); }}">&#9776;</button>
+          <button class="hambBtn1" aria-label="${this.menuOpen1 ? 'close menu' : 'open menu'}" aria-expanded="${this.menuOpen1 ? 'true' : 'false'}" @click="${() => { this.menuOpen1 = !this.menuOpen1; this.requestUpdate(); }}">&#9776;</button>
         </div>
       </div>
 
       ${this.menuOpen1 ? html`
-        <div class="mobMenu1" style="display:block;">
-          <a @click="${() => this.navTo1('home')}">home</a>
-          <a @click="${() => this.navTo1('schedule')}">schedule</a>
-          <a @click="${() => this.navTo1('programs')}">programs</a>
-          <a @click="${() => this.navTo1('about')}">about</a>
-          <a @click="${() => this.navTo1('programs')}">register</a>
+        <div class="mobMenu1 mobOpen1">
+          <a href="?page=home" @click="${(e) => { e.preventDefault(); this.navTo1('home'); }}">home</a>
+          <a href="?page=schedule" @click="${(e) => { e.preventDefault(); this.navTo1('schedule'); }}">schedule</a>
+          <a href="?page=programs" @click="${(e) => { e.preventDefault(); this.navTo1('programs'); }}">programs</a>
+          <a href="?page=about" @click="${(e) => { e.preventDefault(); this.navTo1('about'); }}">about</a>
+          <a href="?page=programs" @click="${(e) => { e.preventDefault(); this.navTo1('programs'); }}">register</a>
         </div>
       ` : ``}
     `;
