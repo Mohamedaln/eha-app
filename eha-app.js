@@ -5,6 +5,7 @@ import "./eha-hero.js";
 import "./eha-stats-band.js";
 import "./eha-schedule.js";
 import "./eha-news-card.js";
+import "./eha-program-card.js";
 import "./eha-sponsors.js";
 import "./eha-about.js";
 import "./eha-footer.js";
@@ -148,6 +149,15 @@ class EhaApp extends DDDSuper(LitElement) {
     window.addEventListener("popstate", () => {
       this.checkPg1();
     });
+    let md1 = window.matchMedia('(prefers-color-scheme: dark)');
+    if (md1.matches) {
+      this.drk1 = true;
+      this.syncTheme1();
+    }
+    md1.addEventListener('change', (e) => {
+      this.drk1 = e.matches;
+      this.syncTheme1();
+    });
   }
 
   checkPg1() {
@@ -222,30 +232,30 @@ class EhaApp extends DDDSuper(LitElement) {
       <div class="pgHead1"><h1>our programs</h1></div>
       <div class="pgContent1">
         <div class="pgGrid1">
-          <div class="pgCard1">
-            <h3>8U division</h3>
-            <p>for players ages 6 to 8. focus on fundamentals and fun</p>
-          </div>
-          <div class="pgCard1">
-            <h3>10U division</h3>
-            <p>for players ages 9 to 10. building team skills and game sense</p>
-          </div>
-          <div class="pgCard1">
-            <h3>12U division</h3>
-            <p>for players ages 11 to 12. competitive play with skill development</p>
-          </div>
-          <div class="pgCard1">
-            <h3>14U division</h3>
-            <p>for players ages 13 to 14. elite training and tournament play</p>
-          </div>
-          <div class="pgCard1">
-            <h3>18U division</h3>
-            <p>for players ages 15 to 18. college prep level training</p>
-          </div>
-          <div class="pgCard1">
-            <h3>summer camp</h3>
-            <p>intensive summer training open to all ages. limited spots available</p>
-          </div>
+          <eha-program-card
+            ttl1="8U division"
+            txt1="for players ages 6 to 8. focus on fundamentals and fun"
+          ></eha-program-card>
+          <eha-program-card
+            ttl1="10U division"
+            txt1="for players ages 9 to 10. building team skills and game sense"
+          ></eha-program-card>
+          <eha-program-card
+            ttl1="12U division"
+            txt1="for players ages 11 to 12. competitive play with skill development"
+          ></eha-program-card>
+          <eha-program-card
+            ttl1="14U division"
+            txt1="for players ages 13 to 14. elite training and tournament play"
+          ></eha-program-card>
+          <eha-program-card
+            ttl1="18U division"
+            txt1="for players ages 15 to 18. college prep level training"
+          ></eha-program-card>
+          <eha-program-card
+            ttl1="summer camp"
+            txt1="intensive summer training open to all ages. limited spots available"
+          ></eha-program-card>
         </div>
       </div>
     `;
