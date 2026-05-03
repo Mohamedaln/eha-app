@@ -21,8 +21,7 @@ class EhaApp extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.pg1 = "home";
-    this.drk1 = true;
-    this.syncTheme1();
+    this.drk1 = false;
   }
 
   static get properties() {
@@ -145,18 +144,16 @@ class EhaApp extends DDDSuper(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     this.checkPg1();
-    this.syncTheme1();
     window.addEventListener("popstate", () => {
       this.checkPg1();
     });
-    let md1 = window.matchMedia('(prefers-color-scheme: dark)');
-    if (md1.matches) {
-      this.drk1 = true;
-      this.syncTheme1();
-    }
-    md1.addEventListener('change', (e) => {
+    var sys1 = window.matchMedia('(prefers-color-scheme: dark)');
+    this.drk1 = sys1.matches;
+    this.syncTheme1();
+    sys1.addEventListener('change', (e) => {
       this.drk1 = e.matches;
       this.syncTheme1();
+      this.requestUpdate();
     });
   }
 
